@@ -1,5 +1,7 @@
 {
   "name": "gullveig",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

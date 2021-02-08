@@ -1,0 +1,35 @@
+ion-slides {
+    height: 90%
+}
+
+.default-container {
+    justify-content: center;
+}
+
+.pet-display {
+    cursor: pointer;
+    display: grid;
+    img {
+        height: 100px;
+    }
+    opacity: 0.4;
+
+    &.selected {
+        opacity: 1 !important;
+    }
+}
+
+.title-container {
+    padding-top: 1vh;
+    justify-content: center;
+}
+
+.slide-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+ion-avatar {
+    width: 140px !important;
+    height: 140px !important;
+}

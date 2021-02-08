@@ -1,0 +1,31 @@
+<ion-card>
+  <img [src]="characterData.photo || '../../assets/image/placeholder-user.png'" />
+  <ion-card-header>
+    <ion-card-subtitle>
+      {{characterData.schoolYear}}° ano
+    </ion-card-subtitle>
+    <ion-card-title>
+      {{characterData.name}}
+    </ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label class="{{characterData.house.name.toLowerCase()}}">
+            {{characterData.house.displayName}}
+          </ion-label> /
+          <ion-label>
+            {{characterData.bloodType}}
+          </ion-label> /
+          <ion-label>
+            Atualmente em
+          </ion-label>
+          <ion-label style="font-weight: bold">
+            {{decidedGroup}}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>

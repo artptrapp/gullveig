@@ -1,0 +1,75 @@
+@keyframes row-shrink {
+    from {
+        padding-top: 20vh;
+    }
+    to {
+        padding-top: 10vh;
+    }
+}
+
+@keyframes image-shrink {
+    from {
+        width: 300px;
+    }
+    to {
+        width: 140px;
+    }
+}
+
+@keyframes show-slow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 100;
+    }
+}
+
+ion-content {
+    padding: 0 !important;
+    --overflow: hidden;
+}
+
+ion-item {
+    width: 100%;
+}
+
+ion-row {
+    padding-top: 20vh;
+    transition: all;
+    animation-name: row-shrink;
+    animation-duration: 2s;
+    animation-delay: 2s;
+    animation-fill-mode: forwards;
+    justify-content: center;
+}
+
+.logo-initial {
+    animation-delay: 2s;
+    animation-name: image-shrink;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    width: 300px;
+}
+
+.login-content {
+    opacity: 0;
+    animation-name: show-slow;
+    animation-delay: 2.5s;
+    padding: 10vh 10px 0 10px;
+}
+
+ion-button {
+    height: 30px;
+}
+
+ion-col {
+    padding-top: 1rem;
+}
+
+.error-feedback {
+    height: 25px;
+    width: 100%;
+    text-align: center;
+    color: red;
+}

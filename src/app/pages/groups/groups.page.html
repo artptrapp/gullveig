@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title *ngIf="isLoading">
+      Carregando...
+    </ion-title>
+    <ion-title *ngIf="!isLoading">
+      {{currentGroup.displayName}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!isLoading">
+
+  <div class="main-container" [ngStyle]="backgroundStyle">
+  </div>
+
+  <div class="messages-wrapper">
+    <div class="messages-container">
+      <div *ngFor="let message of messages">
+        <message [loggedUserId]="userId" [message]="message"></message>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="no-padding" size="10">
+          <ion-textarea [(ngModel)]="textMessage" placeholder="Digite sua mensagem aqui..." class="message-textarea"
+            rows="3">
+
+          </ion-textarea>
+        </ion-col>
+        <ion-col size="2">
+          <ion-button (click)="sendMessage()" style="height: 100%">
+            <ion-icon name="send-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

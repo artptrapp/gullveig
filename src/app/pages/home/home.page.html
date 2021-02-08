@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <menu-manager></menu-manager>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-label class="home-title-play">
+          Arraste para o lado para ver seus outros personagens, ou clique em <ion-icon name="checkmark-outline">
+          </ion-icon> para jogar com {{selectedCharacterName}}
+        </ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides (ionSlideDidChange)="sliderChanges()">
+    <ion-slide *ngFor="let character of characters">
+      <character-card [characterData]="character"></character-card>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addCharacter()">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+
+    <ion-fab-button (click)="start()">
+      <ion-icon name="checkmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

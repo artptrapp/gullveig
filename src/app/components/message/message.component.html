@@ -1,0 +1,8 @@
+<div class="message-container" [class.float-right]="loggedUserId == message.owningUser">
+  <div class="message-content">
+    {{message.message}}
+    <div class="message-footer">
+      {{message.owningCharacter.name}} - {{formattedTimeAgoText}}
+    </div>
+  </div>
+</div>

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -14,5 +17,16 @@ export class AppComponent {
     { title: 'Spam', url: '/folder/Spam', icon: 'warning' },
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
-  constructor() {}
+  constructor(
+    private auth: AngularFireAuth,
+    private router: Router
+  ) {
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        return
+      }
+
+      this.router.navigateByUrl('/home')
+    })
+  }
 }

@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [disabled]="loading" text="Voltar">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+    <img class="logo-initial" src="../../../assets/image/logo-png.png">
+  </ion-row>
+  <ion-row class="login-content">
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Nome de usuário</ion-label>
+      <ion-input [(ngModel)]="username" type="text"></ion-input>
+    </ion-item>
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Senha</ion-label>
+      <ion-input [(ngModel)]="password" type="password"></ion-input>
+    </ion-item>
+    <ion-item class="ion-no-padding">
+      <ion-label position="floating">Confirme a senha</ion-label>
+      <ion-input [(ngModel)]="passwordConfirmation" type="password"></ion-input>
+    </ion-item>
+    <div class="error-feedback">
+      <ul>
+        <li *ngFor="let error of loginErrors">
+          <ion-label>
+            {{error}}
+          </ion-label>
+        </li>
+      </ul>
+    </div>
+    <ion-col col-12 class="ion-no-padding">
+      <ion-button [disabled]="loading" expand="block" color="primary" (click)="register()">
+        <div *ngIf="!loading">
+          Registrar <ion-icon name="color-wand-outline"></ion-icon>
+        </div>
+        <div *ngIf="loading">
+          <ion-spinner name="dots"></ion-spinner>
+        </div>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-content>
