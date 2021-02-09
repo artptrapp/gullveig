@@ -6,6 +6,11 @@
     <ion-title *ngIf="!isLoading">
       {{currentGroup.displayName}}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openGroupSelection()" *ngIf="!isLoading">
+        <ion-icon name="walk-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +22,7 @@
   <div class="messages-wrapper">
     <div class="messages-container">
       <div *ngFor="let message of messages">
-        <message [loggedUserId]="userId" [message]="message"></message>
+        <message [loggedUserId]="currentCharacter.id" [message]="message"></message>
       </div>
     </div>
   </div>

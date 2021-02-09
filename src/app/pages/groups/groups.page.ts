@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Router, ActivatedRoute } from '@angular/router';
+import { ModalController } from '@ionic/angular';
 import { Character, CharacterService, Group } from 'src/app/services/character/character.service';
 import { GroupsService, Message } from 'src/app/services/groups/groups.service';
+import { GroupSelectionPage } from '../group-selection/group-selection.page';
 
 @Component({
   selector: 'app-groups',
@@ -29,7 +31,8 @@ export class GroupsPage implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private groupsService: GroupsService,
-    private charactersService: CharacterService
+    private charactersService: CharacterService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -50,6 +53,8 @@ export class GroupsPage implements OnInit {
   }
 
   async loadGroup() {
+    this.isLoading = true
+
     const group = await this.groupsService.getCurrentGroup(this.userId, this.selectedCharacterId)
     this.currentGroup = group
 
@@ -79,6 +84,28 @@ export class GroupsPage implements OnInit {
 
     this.isSendingMessage = false;
     this.textMessage = ""
+  }
+
+  async openGroupSelection() {
+    const modal = await this.modalController.create({
+      component: GroupSelectionPage,
+      componentProps: {
+        character: this.currentCharacter
+      }      
+    });
+
+    await modal.present();
+    const { data } = await modal.onDidDismiss()
+
+    if (!data) {
+      return
+    }
+
+    const group = data as Group
+    this.currentGroup = group
+
+    await this.groupsService.joinGroup(this.userId, this.selectedCharacterId, group)
+    this.loadGroup()
   }
 
 }

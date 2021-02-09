@@ -58,6 +58,7 @@ export class CharacterService {
   async getCharacter(userId: string, characterId: string): Promise<Character> {
     const doc = await this.db.collection('users').doc(userId).collection('characters').doc(characterId).get().toPromise()
     const character = doc.data() as Character
+    character.id = doc.id
     return character
   }
 

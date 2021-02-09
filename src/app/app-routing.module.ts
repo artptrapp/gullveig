@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'groups',
     loadChildren: () => import('./pages/groups/groups.module').then( m => m.GroupsPageModule)
+  },
+  {
+    path: 'group-selection',
+    loadChildren: () => import('./pages/group-selection/group-selection.module').then( m => m.GroupSelectionPageModule)
   }
 ];
 

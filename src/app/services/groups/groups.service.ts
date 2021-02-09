@@ -48,6 +48,17 @@ export class GroupsService {
     this.messageArrivedListener[key] = listener
   }
 
+  async getAllGroups() {
+    const doc = await this.db.collection('groups').get().toPromise()
+    const groups: Group[] = []
+    doc.forEach(group => {
+      const g = group.data() as Group
+      g.id = group.id
+      groups.push(g)
+    })
+    return groups
+  }
+
   async joinGroup(userId: string, characterId: string, group?: Group) {
     try {
       const character = await this.characterService.getCharacter(userId, characterId)
